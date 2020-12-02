@@ -21,6 +21,14 @@ Vehicle.create(
   ]
 )
 
+Passenger.create(
+  [
+    {name: 'Bill Fox', driver: true, age: 31, created_at: DateTime.now, last_updated: DateTime.now, vehicle_id:0},
+    {name: 'Jenna Thompson', driver: false, age: 7, created_at: DateTime.now, last_updated: DateTime.now, vehicle_id:0},
+    {name: 'Jane Fox', driver: false, age: 29, created_at: DateTime.now, last_updated: DateTime.now, vehicle_id:0}
+  ]
+)
+
 # Ship.create(
 #   [
 #     {name: 'Los Angeles', floating: true, crew_count: 5, port_id:0, created_at: DateTime.now, last_updated: DateTime.now},
