@@ -1,5 +1,5 @@
-class PortsController < ApplicationController
+class ShipsController < ApplicationController
   def index
-    @ports = Port.all
+    @ships = Ship.all
   end
 end
