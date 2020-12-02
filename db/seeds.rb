@@ -13,6 +13,14 @@ Port.create(
   ]
 )
 
+Ship.create(
+  [
+    {name: 'Shipwreck', floating: false, crew_count: 0, port_id:0, created_at: DateTime.now, last_updated: DateTime.now},
+    {name: 'Battleship', floating: true, crew_count: 1500, port_id:0, created_at: DateTime.now, last_updated: DateTime.now},
+    {name: 'Destroyer', floating: true, crew_count: 100, port_id:0, created_at: DateTime.now, last_updated: DateTime.now}
+  ]
+)
+
 Vehicle.create(
   [
     {name: 'Boeing 747', locked: true, passenger_capacity: 100, created_at: DateTime.now, last_updated: DateTime.now},
@@ -28,11 +36,3 @@ Passenger.create(
     {name: 'Jane Fox', driver: false, age: 29, created_at: DateTime.now, last_updated: DateTime.now, vehicle_id:0}
   ]
 )
-
-# Ship.create(
-#   [
-#     {name: 'Los Angeles', floating: true, crew_count: 5, port_id:0, created_at: DateTime.now, last_updated: DateTime.now},
-#     {name: 'New York', open: false, number_ships: 3, port_id:0, created_at: DateTime.now, last_updated: DateTime.now},
-#     {name: 'New Orleans', open: true, number_ships: 2, port_id:0, created_at: DateTime.now, last_updated: DateTime.now}
-#   ]
-# )
