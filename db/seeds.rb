@@ -7,9 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 Port.create(
   [
-    {name: 'Los Angeles', open: true, number_ships: 5, created_at: DateTime.now, last_updated: DateTime.now},
-    {name: 'New York', open: false, number_ships: 3, created_at: DateTime.now, last_updated: DateTime.now},
-    {name: 'New Orleans', open: true, number_ships: 2, created_at: DateTime.now, last_updated: DateTime.now}
+    {name: 'Los Angeles', panamax: true, dock_count: 5, created_at: DateTime.now, last_updated: DateTime.now},
+    {name: 'New York', panamax: false, dock_count: 3, created_at: DateTime.now, last_updated: DateTime.now},
+    {name: 'New Orleans', panamax: true, dock_count: 2, created_at: DateTime.now, last_updated: DateTime.now}
   ]
 )
 
