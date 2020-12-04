@@ -12,7 +12,6 @@ describe "Vehicle record form" do
 
     expect(current_path).to eq("/vehicles")
     expect(page).to have_content("Very large vehicle")
-    expect(page).to have_content("600")
   end
 
 
