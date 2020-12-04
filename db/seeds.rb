@@ -21,13 +21,13 @@ Ship.create(
   ]
 )
 
-Vehicle.create(
-  [
-    {name: 'Boeing 747', locked: true, passenger_capacity: 100, created_at: DateTime.now, last_updated: DateTime.now},
-    {name: 'Toyota Highlander', locked: false, passenger_capacity: 4, created_at: DateTime.now, last_updated: DateTime.now},
-    {name: 'Ford Raptor', locked: true, passenger_capacity: 5, created_at: DateTime.now, last_updated: DateTime.now}
-  ]
-)
+# Vehicle.create(
+#   [
+#     {name: 'Boeing 747', locked: true, passenger_capacity: 100, created_at: DateTime.now, last_updated: DateTime.now},
+#     {name: 'Toyota Highlander', locked: false, passenger_capacity: 4, created_at: DateTime.now, last_updated: DateTime.now},
+#     {name: 'Ford Raptor', locked: true, passenger_capacity: 5, created_at: DateTime.now, last_updated: DateTime.now}
+#   ]
+# )
 
 Passenger.create(
   [
