@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   post '/vehicles', to: 'vehicles#create'
   get '/vehicles', to: 'vehicles#index'
   get 'vehicles/new', to: 'vehicles#new'
+  get '/vehicles/:id/edit', to: 'vehicles#edit'
   get '/passengers', to: 'passengers#index'
   get 'vehicles/:id', to: 'vehicles#show'
   get 'passengers/:id', to: 'passengers#show'
