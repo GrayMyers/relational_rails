@@ -11,4 +11,9 @@ class VehiclesController < ApplicationController
 
   end
 
+  def create
+    Vehicle.create(name:params[:name],passenger_capacity:params[:passenger_capacity],locked:params[:locked])
+    redirect_to "/vehicles"
+  end
+
 end
