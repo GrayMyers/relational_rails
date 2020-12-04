@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get '/ships', to: 'ships#index'
   get '/ships/:id', to: 'ships#show'
   get '/vehicles', to: 'vehicles#index'
+  get 'vehicles/new', to: 'vehicles#new'
   get '/passengers', to: 'passengers#index'
   get 'vehicles/:id', to: 'vehicles#show'
   get 'passengers/:id', to: 'passengers#show'
