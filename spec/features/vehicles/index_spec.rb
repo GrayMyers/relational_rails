@@ -7,4 +7,12 @@ describe 'as a visitor when I visit the vehicle index page' do
     expect(page).to have_content("Toyota Highlander")
     expect(page).to have_content("Ford Raptor")
   end
+
+  it 'Then I see a link which takes me to a creation page' do
+    visit '/vehicles'
+    expect(page).to have_link("creation link")
+    click_link "creation_link"
+    expect(current_path).to eq("/new")
+    expect(page).to have_content("Create a New Vehicle")
+  end
 end
