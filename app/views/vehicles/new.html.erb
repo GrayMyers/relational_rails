@@ -1,12 +1,13 @@
 <h1>Create a New Vehicle</h1>
 <form action="/vehicles" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
   <p>Name of vehicle:</p>
   <input type="text" name="name" id="name"></input>
 
   <p>Locked:<input type="checkbox" name="locked" id="locked"></input><p>
 
   <p>Number of seats:</p>
-  <input type="number" name="passenger_capacity" id="passenger_capacity"></input>
+  <input type="number" name="passenger_capacity" id="passenger_capacity"></input><br>
 
   <input type="submit" name="Create" id="create"></input>
 <form>
