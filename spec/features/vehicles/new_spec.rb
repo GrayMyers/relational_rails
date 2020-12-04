@@ -1,7 +1,8 @@
-describe "Vehicle record form" do
-  it "has a form containing information for the creation of a new Vehicle" do
-    visit "/vehicles/new"
+require 'rails_helper'
 
+describe "Vehicle record form" do
+  it "has a form for creating a new vehicle" do
+    visit "/vehicles/new"
     expect(page).to have_content("Create a New Vehicle")
 
     fill_in(:name, with: "Very large vehicle")
