@@ -2,6 +2,9 @@ require 'rails_helper'
 
 describe 'as a visitor when I visit the vehicle index page' do
   it 'Then I see the name of each vehicle record in the system' do
+    plane = Vehicle.create(name:"Boeing 747", locked: true, passenger_capacity: 100)
+    car = Vehicle.create(name:"Toyota Highlander", locked: false, passenger_capacity: 4)
+    truck = Vehicle.create(name:"Ford Raptor", locked: true, passenger_capacity: 5)
     visit '/vehicles'
     expect(page).to have_content("Boeing 747")
     expect(page).to have_content("Toyota Highlander")
