@@ -13,8 +13,8 @@ describe 'as a visitor when I visit the vehicle index page' do
 
   it 'Then I see a link which takes me to a creation page' do
     visit '/vehicles'
-    expect(page).to have_link("creation link")
-    click_link "creation link"
+    expect(page).to have_link("New Vehicle")
+    click_link "New Vehicle"
     expect(current_path).to eq("/vehicles/new")
     expect(page).to have_content("Create a New Vehicle")
   end
