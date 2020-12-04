@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get '/ports/:id', to: 'ports#show'
   get '/ships', to: 'ships#index'
   get '/ships/:id', to: 'ships#show'
+  post '/vehicles', to: 'vehicles#create'
   get '/vehicles', to: 'vehicles#index'
   get 'vehicles/new', to: 'vehicles#new'
   get '/passengers', to: 'passengers#index'
