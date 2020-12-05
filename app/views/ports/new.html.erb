@@ -1,12 +1,15 @@
-<%= form_for @port do |f| %>
-  <%= f.label :name, 'Port Name' %>
-  <%= f.text_field :name %><br />
-  <%= f.label :dock_count, 'Dock Count' %>
-  <%= f.number_field :dock_count, min: 0 %><br />
-  <%= f.label :panamax, 'Panamax Capable (Greater than 12.56 meters in depth)' %><br />
-  <%= f.label :panamax_true, "True" %>
-  <%= f.radio_button :panamax, "true" %>
-  <%= f.label :panamax_false, "False" %>
-  <%= f.radio_button :panamax, "false" %>
-  <%= f.submit 'Create Port' %>
+<%= form_tag '/ports' do %>
+  <%= label_tag :name, 'Port Name' %>
+  <%= text_field_tag :name %>
+
+  <%= label_tag :dock_count, 'Dock Count' %>
+  <%= number_field_tag(:dock_count) %>
+
+  <%= label_tag 'Panamax Capable (Greater than 12.56 meters in depth)' %>
+  <%= radio_button_tag :panamax, "true" %>
+  <%= label_tag :panamax_true, "True" %>
+  <%= radio_button_tag :panamax, "false" %>
+  <%= label_tag :panamax_false, "False" %>
+
+  <%= submit_tag 'Create Port' %>
 <% end %>
