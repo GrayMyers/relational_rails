@@ -19,6 +19,6 @@ class PortsController < ApplicationController
   private
 
   def port_params
-    params.require(:port).permit(:name, :dock_count, :panamax)
+    params.permit(:name, :dock_count, :panamax)
   end
 end
