@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get '/vehicles/new', to: 'vehicles#new'
   get 'vehicles/:id', to: 'vehicles#show'
   post '/vehicles/:id', to: 'vehicles#update'
+  delete '/vehicles/:id', to: 'vehicles#delete'
   get '/vehicles/:id/edit', to: 'vehicles#edit'
   get '/passengers', to: 'passengers#index'
   get 'passengers/:id', to: 'passengers#show'
