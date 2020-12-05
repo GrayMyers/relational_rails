@@ -26,4 +26,10 @@ class VehiclesController < ApplicationController
     redirect_to "/vehicles/#{vehicle[:id]}"
   end
 
+  def delete
+    vehicle = Vehicle.find(params[:id])
+    vehicle.destroy
+    redirect_to "/vehicles/"
+  end
+
 end
