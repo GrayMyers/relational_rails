@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   post '/ports', to: 'ports#create'
   get '/ports/:id/edit', to: 'ports#edit'
   patch '/ports/:id', to: 'ports#update'
+  delete '/ports/:id', to: 'ports#delete'
 
   get '/ships', to: 'ships#index'
   get '/ships/:id', to: 'ships#show'
