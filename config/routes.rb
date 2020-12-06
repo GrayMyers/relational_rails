@@ -12,7 +12,9 @@ Rails.application.routes.draw do
   patch '/vehicles/:id', to: 'vehicles#update'
   delete '/vehicles/:id', to: 'vehicles#delete'
   get '/vehicles/:id/edit', to: 'vehicles#edit'
+  
   get '/vehicles/:id/passengers', to: 'vehicles#passengers'
+  get '/vehicles/:id/passengers/new', to: 'passengers#new'
 
   get '/passengers', to: 'passengers#index'
   get '/passengers/:id', to: 'passengers#show'
