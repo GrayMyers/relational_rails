@@ -6,7 +6,7 @@ describe "As a visitor When I visit '/child_table_name/:id'" do
     passenger1 = plane.passengers.create(name: "passenger 300", driver:false, age:37)
 
     visit "/passengers/#{passenger1.id}"
-    expect(page).to have_content("passenger 1")
+    expect(page).to have_content("passenger 300")
     expect(page).to have_content("Driver: false")
     expect(page).to have_content("Age: 37")
 
