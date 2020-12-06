@@ -19,4 +19,5 @@ Rails.application.routes.draw do
 
   get '/passengers', to: 'passengers#index'
   get '/passengers/:id', to: 'passengers#show'
+  get '/passenger/:id/edit', to: 'passengers#edit'
 end
