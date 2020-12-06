@@ -1,5 +1,6 @@
 <h1>Passenger</h1>
 <%= link_to("Update Passenger","/passengers/#{@passenger.id}/edit")%>
+<%= link_to("Delete Passenger","/passengers/#{@passenger.id}/",method: :delete)%>
 <h3><%= @passenger.name %></h3>
 <p>Age: <%= @passenger.age %></p>
 <p>Driver: <%= @passenger.driver %></p>
