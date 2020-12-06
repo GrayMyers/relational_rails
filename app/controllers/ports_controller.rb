@@ -26,6 +26,12 @@ class PortsController < ApplicationController
     render :show
   end
 
+  def delete
+    @port = Port.find(params[:id])
+    @port.destroy
+    redirect_to '/ports'
+  end
+
   private
 
   def port_params

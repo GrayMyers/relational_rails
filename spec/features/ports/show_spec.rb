@@ -30,4 +30,17 @@ describe 'As a visitor when I visit a port show page' do
       expect(current_path).to eql("/ports/#{la.id}/edit")
     end
   end
+
+  describe "When I click the link 'Delete Port'" do
+    it "I am redirected to '/ports' where I no longer see the port" do
+      la = Port.create(name: 'Los Angeles', panamax: true, dock_count: 5)
+
+      visit "/ports/#{la.id}"
+
+      click_on 'Delete Port'
+
+      expect(current_path).to eql("/ports")
+      expect(page).to_not have_content('Los Angeles')
+    end
+  end
 end
