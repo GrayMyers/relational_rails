@@ -1,5 +1,5 @@
 <h1>Create a New Passenger</h1>
-<%= form_tag("/vehicles/#{@vehicle.name}/passengers", method: "post") %>
+<%= form_tag("/vehicles/#{@vehicle.id}/passengers", method: "post") %>
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
   <p>Name of passenger:</p>
   <input type="text" name="name" id="name"></input>
