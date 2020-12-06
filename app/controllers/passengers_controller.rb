@@ -17,4 +17,18 @@ class PassengersController < ApplicationController
     redirect_to "/vehicles/#{@vehicle.id}/passengers"
   end
 
+  def edit
+    @passenger = Passenger.find(params[:id])
+  end
+
+  def update
+    passenger = Passenger.find(params[:id])
+    passenger.update(
+      name: params[:name],
+      age: params[:age],
+      driver: params[:driver]
+    )
+    redirect_to "/passengers/#{passenger.id}"
+  end
+
 end

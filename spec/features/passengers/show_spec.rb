@@ -9,5 +9,7 @@ describe "As a visitor When I visit '/child_table_name/:id'" do
     expect(page).to have_content("passenger 1")
     expect(page).to have_content("Driver: false")
     expect(page).to have_content("Age: 37")
+
+    expect(page).to have_link("Update Passenger")
   end
 end
