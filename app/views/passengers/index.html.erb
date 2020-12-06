@@ -4,6 +4,8 @@
   <% @passengers.each do |passenger| %>
     <li>
       <h3><%= passenger.name %></h3>
+      <p>Age: <%= passenger.age %></p>
+      <p>Driver: <%= passenger.driver %></p>
     </li>
   <% end %>
 </ul>
