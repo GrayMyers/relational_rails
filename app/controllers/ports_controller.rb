@@ -17,7 +17,13 @@ class PortsController < ApplicationController
   end
 
   def edit
+    @port = Port.find(params[:id])
+  end
 
+  def update
+    @port = Port.find(params[:id])
+    @port.update(port_params)
+    render :show
   end
 
   private
