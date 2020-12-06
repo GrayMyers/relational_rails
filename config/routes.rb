@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   get '/ports/new', to: 'ports#new'
   get '/ports/:id', to: 'ports#show'
   post '/ports', to: 'ports#create'
+  get '/ports/:id/edit', to: 'ports#edit'
+
   get '/ships', to: 'ships#index'
   get '/ships/:id', to: 'ships#show'
 
