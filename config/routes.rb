@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   patch '/vehicles/:id', to: 'vehicles#update'
   delete '/vehicles/:id', to: 'vehicles#delete'
   get '/vehicles/:id/edit', to: 'vehicles#edit'
-  
+  get '/vehicles/:id/passengers', to: 'vehicles#passengers'
+
   get '/passengers', to: 'passengers#index'
 end
