@@ -31,4 +31,9 @@ class PassengersController < ApplicationController
     redirect_to "/passengers/#{passenger.id}"
   end
 
+  def delete
+    passenger = Passenger.find(params[:id])
+    passenger.destroy
+    redirect_to "/passengers/"
+  end
 end
