@@ -17,4 +17,13 @@ describe 'as a visitor when I visit the page of a vehicle by id' do
     expect(current_path).to eq("/vehicles/#{plane[:id]}/edit")
     expect(page).to have_content("Update")
   end
+
+  it 'Then I see a link to delete the parent' do
+    plane = Vehicle.create(name:"Boeing 767", locked: true, passenger_capacity: 100)
+    visit "vehicles/#{plane[:id]}"
+    expect(page).to have_link("Delete Vehicle")
+    click_link "Delete Vehicle"
+    expect(current_path).to eq("/vehicles/")
+    expect(page).to have_no_content("767")
+  end
 end
