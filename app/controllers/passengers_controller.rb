@@ -17,7 +17,7 @@ class PassengersController < ApplicationController
     redirect_to "/vehicles/#{@vehicle.id}/passengers"
   end
 
-  def edit #git commit -m "Add action for update passenger link"
+  def edit 
     @passenger = Passenger.find(params[:id])
   end
 
