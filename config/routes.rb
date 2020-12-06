@@ -17,7 +17,9 @@ Rails.application.routes.draw do
   get '/vehicles/:id/passengers/new', to: 'passengers#new'
   post '/vehicles/:id/passengers', to: 'passengers#create'
 
+
   get '/passengers', to: 'passengers#index'
   get '/passengers/:id', to: 'passengers#show'
-  get '/passenger/:id/edit', to: 'passengers#edit'
+  get '/passengers/:id/edit', to: 'passengers#edit'
+  patch '/passengers/:id', to: 'passengers#update'
 end
