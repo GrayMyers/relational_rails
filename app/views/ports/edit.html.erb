@@ -1,0 +1,15 @@
+<%= form_tag "/ports/#{@port.id}", method: :patch do %>
+  <%= label_tag :name, 'Port Name' %>
+  <%= text_field_tag :name %><br/>
+
+  <%= label_tag :dock_count, 'Dock Count' %>
+  <%= number_field_tag :dock_count, 0, min: 0 %><br/>
+
+  <%= label_tag 'Panamax Capable (Greater than 12.56 meters in depth)' %><br/>
+  <%= radio_button_tag :panamax, "true" %>
+  <%= label_tag :panamax_true, "True" %>
+  <%= radio_button_tag :panamax, "false" %>
+  <%= label_tag :panamax_false, "False" %><br/>
+
+  <%= submit_tag 'Update' %>
+<% end %>

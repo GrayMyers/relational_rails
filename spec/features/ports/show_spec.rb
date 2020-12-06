@@ -18,4 +18,16 @@ describe 'As a visitor when I visit a port show page' do
     expect(page).to have_content("Panamax Capable: #{ny.panamax}")
     expect(page).to have_content("Dock Count: #{ny.dock_count}")
   end
+
+  describe "When I click the link 'Update Port'" do
+    it "Then I am taken to '/ports/:id/edit'" do
+      la = Port.create(name: 'Los Angeles', panamax: true, dock_count: 5)
+
+      visit "/ports/#{la.id}"
+
+      click_on 'Update Port'
+
+      expect(current_path).to eql("/ports/#{la.id}/edit")
+    end
+  end
 end
