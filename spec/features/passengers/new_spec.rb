@@ -17,3 +17,4 @@ describe "As a visitor when I visit a Parent Childs Index page" do
     expect(current_path).to eq("/vehicles/#{plane.id}/passengers")
     expect(page).to have_content("a new passenger")
   end
+end
