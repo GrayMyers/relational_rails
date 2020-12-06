@@ -15,4 +15,5 @@ Rails.application.routes.draw do
   get '/vehicles/:id/passengers', to: 'vehicles#passengers'
 
   get '/passengers', to: 'passengers#index'
+  get '/passengers/:id', to: 'passengers#show'
 end
