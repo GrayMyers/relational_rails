@@ -38,4 +38,12 @@ class VehiclesController < ApplicationController
     end
   end
 
+  def passengers
+    @vehicle = Vehicle.find(params[:id])
+    @passengers = Passenger.where(vehicle_id: @vehicle.id)
+    @passengers = [@passengers] if @passengers.class == Passenger
+    @passengers ||= [] #trying to iterate on a null value will break the page
+
+  end
+
 end
