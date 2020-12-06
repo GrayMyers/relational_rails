@@ -25,7 +25,7 @@ describe 'As a visitor when I visit a port show page' do
 
       visit "/ports/#{la.id}"
 
-      click 'Update Port'
+      click_on 'Update Port'
 
       expect(current_path).to eql("/ports/#{la.id}/edit")
     end
