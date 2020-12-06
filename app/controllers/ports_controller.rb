@@ -16,6 +16,10 @@ class PortsController < ApplicationController
     redirect_to '/ports'
   end
 
+  def edit
+
+  end
+
   private
 
   def port_params
