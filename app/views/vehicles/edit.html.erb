@@ -1,5 +1,5 @@
 <h1>Update <%= @vehicle.name %></h1>
-<form action=<%="/vehicles/#{@vehicle.id}"%> method="post">
+<%=form_tag("/vehicles/#{@vehicle.id}", method: "patch")%>
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
   <p>Name of vehicle:</p>
   <input type="text" name="name" id="name" value=<%= @vehicle.name %> ></input>
@@ -10,4 +10,3 @@
   <input type="number" name="passenger_capacity" id="passenger_capacity" value=<%= @vehicle.passenger_capacity %> ></input><br><br>
 
   <input type="submit" value="Update" id="create"></input>
-<form>

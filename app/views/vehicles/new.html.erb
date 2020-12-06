@@ -1,5 +1,5 @@
 <h1>Create a New Vehicle</h1>
-<form action="/vehicles" method="post">
+<%= form_tag("/vehicles", method: "post") %>
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
   <p>Name of vehicle:</p>
   <input type="text" name="name" id="name"></input>
@@ -10,4 +10,3 @@
   <input type="number" name="passenger_capacity" id="passenger_capacity"></input><br><br>
 
   <input type="submit" value="Create Vehicle" id="create"></input>
-<form>
