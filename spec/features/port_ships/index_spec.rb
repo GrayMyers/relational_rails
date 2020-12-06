@@ -15,7 +15,18 @@ describe 'As a visitor' do
       expect(page).to_not have_content("Shipwreck")
       expect(page).to_not have_content("Floating: false")
       expect(page).to_not have_content("Crew Count: 0")
+    end
 
+    it "Then I see a 'Create Ship' link that takes me to '/ports/:port_id/ships/new'" do
+      la = Port.create(name: 'Los Angeles', panamax: true, dock_count: 5)
+
+      visit "/ports/#{la.id}/ships"
+
+      expect(page).to have_link('Create Ship')
+
+      click_link('Create Ship')
+
+      expect(current_path).to eql("/ports/#{la.id}/ships/new")
     end
   end
 end
