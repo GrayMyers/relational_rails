@@ -15,7 +15,7 @@ describe "As a visitor When I visit '/child_table_name/:id'" do
     expect(page).to have_link("Delete Passenger")
     click_link "Delete Passenger"
 
-    expect(current_path).to eq("/passengers")
+    expect(current_path).to eq("/passengers/")
     expect(page).to have_no_content("passenger 300")
   end
 end
