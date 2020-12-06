@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   delete '/ports/:id', to: 'ports#delete'
 
   get '/ports/:port_id/ships', to: 'port_ships#index'
+  get '/ports/:port_id/ships/new', to: 'port_ships#new'
 
   get '/ships', to: 'ships#index'
   get '/ships/:id', to: 'ships#show'
