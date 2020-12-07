@@ -1,0 +1,15 @@
+<%= form_tag "/ships/#{@ship.id}", method: :patch do %>
+  <%= label_tag :name, 'Ship Name' %>
+  <%= text_field_tag :name %><br/>
+
+  <%= label_tag :crew_count, 'Crew Count' %>
+  <%= number_field_tag :crew_count, 0, min: 0 %><br/>
+
+  <%= label_tag 'Is this ship floating?' %><br/>
+  <%= radio_button_tag :floating, "true" %>
+  <%= label_tag :floating_true, "True" %>
+  <%= radio_button_tag :floating, "false" %>
+  <%= label_tag :floating_false, "False" %><br/>
+
+  <%= submit_tag 'Update Ship' %>
+<% end %>
