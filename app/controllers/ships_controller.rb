@@ -7,7 +7,7 @@ class ShipsController < ApplicationController
   end
 
   def show
-    
+
   end
 
   def edit
@@ -17,6 +17,11 @@ class ShipsController < ApplicationController
   def update
     @ship.update(ship_params)
     render :show
+  end
+
+  def delete
+    @ship.destroy
+    redirect_to '/ships'
   end
 
   private
