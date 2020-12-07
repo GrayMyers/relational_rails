@@ -3,8 +3,8 @@ require 'rails_helper'
 describe 'As a visitor' do
   describe 'when I visit /ports/:id/ships' do
     it "Then I see each ship associated with that Port including the ship's attributes" do
-      la = Port.create(name: 'Los Angeles', panamax: true, dock_count: 5)
-      battleship = la.ships.create(name: 'Battleship', floating: true, crew_count: 1500)
+      la = Port.create!(name: 'Los Angeles', panamax: true, dock_count: 5)
+      battleship = la.ships.create!(name: 'Battleship', floating: true, crew_count: 1500)
 
       visit "/ports/#{la.id}/ships"
 
@@ -18,7 +18,7 @@ describe 'As a visitor' do
     end
 
     it "Then I see a 'Create Ship' link that takes me to '/ports/:port_id/ships/new'" do
-      la = Port.create(name: 'Los Angeles', panamax: true, dock_count: 5)
+      la = Port.create!(name: 'Los Angeles', panamax: true, dock_count: 5)
 
       visit "/ports/#{la.id}/ships"
 

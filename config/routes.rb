@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get '/ships/:id', to: 'ships#show'
   get '/ships/:id/edit', to: 'ships#edit'
   patch '/ships/:id', to: 'ships#update'
+  delete '/ships/:id', to: 'ships#delete'
 
   post '/vehicles', to: 'vehicles#create'
   get '/vehicles', to: 'vehicles#index'
