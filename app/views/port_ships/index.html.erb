@@ -1,0 +1,11 @@
+<h1>Ships</h1>
+
+<ul>
+  <% @ships.each do |ship| %>
+    <li>
+      <h3><%= ship.name %></h3>
+      <p>Floating: <%= ship.floating %></p>
+      <p>Crew Count: <%= ship.crew_count %></p>
+    </li>
+  <% end %>
+</ul>

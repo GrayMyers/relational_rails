@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   patch '/ports/:id', to: 'ports#update'
   delete '/ports/:id', to: 'ports#delete'
 
+  get '/ports/:port_id/ships', to: 'port_ships#index'
+
   get '/ships', to: 'ships#index'
   get '/ships/:id', to: 'ships#show'
 
