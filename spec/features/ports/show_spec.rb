@@ -2,9 +2,9 @@ require 'rails_helper'
 
 describe 'As a visitor when I visit a port show page' do
   it "Then I see the port with that id including the port's attributes" do
-    la = Port.create(name: 'Los Angeles', panamax: true, dock_count: 5)
-    ny = Port.create(name: 'New York', panamax: false, dock_count: 3)
-    orleans = Port.create(name: 'New Orleans', panamax: true, dock_count: 2)
+    la = Port.create!(name: 'Los Angeles', panamax: true, dock_count: 5)
+    ny = Port.create!(name: 'New York', panamax: false, dock_count: 3)
+    orleans = Port.create!(name: 'New Orleans', panamax: true, dock_count: 2)
 
     visit "/ports/#{la.id}"
 
@@ -21,7 +21,7 @@ describe 'As a visitor when I visit a port show page' do
 
   describe "When I click the link 'Update Port'" do
     it "Then I am taken to '/ports/:id/edit'" do
-      la = Port.create(name: 'Los Angeles', panamax: true, dock_count: 5)
+      la = Port.create!(name: 'Los Angeles', panamax: true, dock_count: 5)
 
       visit "/ports/#{la.id}"
 
@@ -33,7 +33,7 @@ describe 'As a visitor when I visit a port show page' do
 
   describe "When I click the link 'Delete Port'" do
     it "I am redirected to '/ports' where I no longer see the port" do
-      la = Port.create(name: 'Los Angeles', panamax: true, dock_count: 5)
+      la = Port.create!(name: 'Los Angeles', panamax: true, dock_count: 5)
 
       visit "/ports/#{la.id}"
 

@@ -4,7 +4,7 @@ describe 'As a visitor' do
   describe 'When I visit /ports/:id/ships/new' do
     describe "When I fill in the form with the ship's attributes and click the button 'Create Ship'" do
       it "Then I am redirected to the Port Ships Index page where I can see the new ship listed'" do
-        la = Port.create(name: 'Los Angeles', panamax: true, dock_count: 5)
+        la = Port.create!(name: 'Los Angeles', panamax: true, dock_count: 5)
 
         visit "/ports/#{la.id}/ships/new"
 

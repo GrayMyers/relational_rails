@@ -3,8 +3,8 @@ require 'rails_helper'
 describe 'As a visitor when I visit /ships/:id/edit' do
   describe 'When I fill out the form and click the Update Ship button' do
     it "Then I am redirected to the Ship Show page where I see the Ship's updated information" do
-      la = Port.create(name: 'Los Angeles', panamax: true, dock_count: 5)
-      battleship = la.ships.create(name: 'Battleship', floating: true, crew_count: 1500)
+      la = Port.create!(name: 'Los Angeles', panamax: true, dock_count: 5)
+      battleship = la.ships.create!(name: 'Battleship', floating: true, crew_count: 1500)
 
       visit "/ships/#{battleship.id}/edit"
 
