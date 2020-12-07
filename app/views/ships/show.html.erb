@@ -1,5 +1,4 @@
 <h1><%= @ship.name %></h1>
-<p>
-  Floating: <%= @ship.floating %><br>
-  Crew Count: <%= @ship.crew_count %><br>
-</p>
+<p>Floating: <%= @ship.floating %></p>
+<p>Crew Count: <%= @ship.crew_count %></p>
+<%= link_to "Update Ship", "/ships/#{@ship.id}/edit"  %>
