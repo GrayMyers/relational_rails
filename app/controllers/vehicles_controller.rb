@@ -1,7 +1,14 @@
 class VehiclesController < ApplicationController
   def index
-    @vehicles = Vehicle.order(created_at: :desc).find_all{|r| r.locked}
-    @vehicles += Vehicle.order(created_at: :desc).find_all{|r| !r.locked}
+    search_param = params[:search].to_i.to_s
+    if search_param && search_param.length > 0
+      @vehicles = Vehicle.order(created_at: :desc).where("locked = 'true'").where("passenger_capacity > '#{search_param}'")
+      @vehicles += Vehicle.order(created_at: :desc).where("locked = 'false'").where("passenger_capacity > '#{search_param}'")
+    else
+      @vehicles = Vehicle.order(created_at: :desc).where("locked = 'true'")
+      @vehicles += Vehicle.order(created_at: :desc).where("locked = 'false'")
+    end
+
   end
 
   def show
