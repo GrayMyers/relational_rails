@@ -3,7 +3,7 @@ class ShipsController < ApplicationController
   skip_before_action :load_ship, only: [:index]
 
   def index
-    @ships = Ship.all
+    @ships = Ship.all.sorted_recent_at_top
   end
 
   def show

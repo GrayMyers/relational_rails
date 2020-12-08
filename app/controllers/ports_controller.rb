@@ -3,7 +3,7 @@ class PortsController < ApplicationController
   skip_before_action :load_port, only: [:index, :new, :create]
 
   def index
-    @ports = Port.sorted_recent_at_top
+    @ports = Port.all.sorted_recent_at_top
   end
 
   def show
