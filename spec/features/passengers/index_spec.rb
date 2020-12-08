@@ -37,9 +37,9 @@ describe 'as a visitor when I visit the passenger index page' do
     visit "/passengers"
 
     expect(page).to have_button("Only return passengers older than specified age")
-    fill_in(:target_age, with: 50)
+    fill_in(:search, with: 50)
     click_button "Only return passengers older than specified age"
-    
+
     expect(page).to have_content("passenger 2")
 
     expect(page).to have_no_content("passenger 1")
