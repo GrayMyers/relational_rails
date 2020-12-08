@@ -1,10 +1,12 @@
 class PortsController < ApplicationController
+  before_action :load_port
+  skip_before_action :load_port, only: [:index, :new, :create]
+
   def index
-    @ports = Port.all
+    @ports = Port.all.sorted_recent_at_top
   end
 
   def show
-    @port = Port.find(params[:id])
   end
 
   def new
@@ -17,22 +19,23 @@ class PortsController < ApplicationController
   end
 
   def edit
-    @port = Port.find(params[:id])
   end
 
   def update
-    @port = Port.find(params[:id])
     @port.update(port_params)
     render :show
   end
 
   def delete
-    @port = Port.find(params[:id])
     @port.destroy
     redirect_to '/ports'
   end
 
   private
+
+  def load_port
+    @port = Port.find(params[:id])
+  end
 
   def port_params
     params.permit(:name, :dock_count, :panamax)

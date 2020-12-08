@@ -36,6 +36,7 @@ group :development, :test do
   gem 'simplecov'
   gem 'pry'
   gem 'shoulda-matchers', '~> 3.1'
+  gem 'orderly', '~> 0.0.3'
 end
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.

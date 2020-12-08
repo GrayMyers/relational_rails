@@ -2,8 +2,6 @@
 
 <ul>
   <% @ports.each do |port| %>
-    <li>
-      <h3><%= port.name %></h3>
-    </li>
+    <li class="port-<%= port.id %>"><%= port.name %> <%= port.created_at.strftime("Created on %m/%d/%Y") %></li>
   <% end %>
 </ul>
