@@ -60,8 +60,8 @@ describe 'as a visitor when I visit the vehicle index page' do
 
     visit "/vehicles"
 
-    expect(page).to have_link("View vehicles sorted by number of passengers")
-    click_link "View vehicles sorted by number of passengers"
+    expect(page).to have_link "Sort by number of passengers"
+    click_link "Sort by number of passengers"
 
     expect(page.body.index("Boeing 747")).to be < page.body.index("Toyota Highlander")
     expect(page.body.index("Toyota Highlander")).to be < page.body.index("Ford Raptor")
