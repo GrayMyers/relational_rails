@@ -33,4 +33,21 @@ describe "As a visitor when I visit '/parents/:parent_id/child_table_name'" do
     visit "/vehicles/#{car.id}/passengers"
     expect(page).to have_content("Passengers: 1")
   end
+
+  it "Has a link which redirects to the current page with children sorted alphabetically" do
+    car = Vehicle.create(name:"car", locked: true, passenger_capacity: 4)
+    passenger1 = car.passengers.create(name: "passenger A", driver:false, age:37)
+    passenger2 = car.passengers.create(name: "passenger B", driver:true, age:65)
+    passenger3 = car.passengers.create(name: "passenger C", driver:false, age:30)
+    passenger4 = car.passengers.create(name: "passenger D", driver:false, age:28)
+
+    visit "/vehicles/#{car.id}/passengers"
+
+    expect(page).to have_link("Sort Passengers Alphabetically")
+    click_link "Sort Passengers Alphabetically"
+
+    expect(page.body.index("passenger A")).to be < page.body.index("passenger B")
+    expect(page.body.index("passenger B")).to be < page.body.index("passenger C")
+    expect(page.body.index("passenger C")).to be < page.body.index("passenger D")
+  end
 end

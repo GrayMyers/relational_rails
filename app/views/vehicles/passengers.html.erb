@@ -1,6 +1,7 @@
 <h1>Passengers in <%=@vehicle.name%></h1>
 <p>Passengers: <%=@passengers.count%></p>
 <%= link_to("Create Passenger", "/vehicles/#{@vehicle.id}/passengers/new") %>
+<%= link_to("Sort Passengers Alphabetically", "/vehicles/#{@vehicle.id}/passengers?search_type=alphabetical") %>
 <ul>
   <% @passengers.each do |passenger| %>
     <li>
