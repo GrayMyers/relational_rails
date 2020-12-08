@@ -1,4 +1,5 @@
 <h1>Passengers in <%=@vehicle.name%></h1>
+<p>Passengers: <%=@passengers.count%></p>
 <%= link_to("Create Passenger", "/vehicles/#{@vehicle.id}/passengers/new") %>
 <ul>
   <% @passengers.each do |passenger| %>
