@@ -3,7 +3,7 @@
 <ul>
   <% @vehicles.each do |vehicle| %>
     <li>
-      <h3><%= vehicle.name %></h3>
+      <h3><%= vehicle.name %></h3> <%= vehicle.created_at.strftime("Created on %m/%d/%Y") %>
     </li>
   <% end %>
 </ul>
