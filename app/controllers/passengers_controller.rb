@@ -1,7 +1,12 @@
 class PassengersController < ApplicationController
   def index
-    @passengers = Passenger.order(created_at: :desc).find_all{|r| r.driver}
-    @passengers += Passenger.order(created_at: :desc).find_all{|r| !r.driver}
+    if params[:search]
+      @passengers = Passenger.order(created_at: :desc).where("driver = 'true'").where("age > '#{params[:search]}'")
+      @passengers += Passenger.order(created_at: :desc).where("driver = 'false'").where("age > '#{params[:search]}'")
+    else
+      @passengers = Passenger.order(created_at: :desc).where("driver = 'true'")
+      @passengers += Passenger.order(created_at: :desc).where("driver = 'false'")
+    end
   end
 
   def show
