@@ -51,11 +51,13 @@ class VehiclesController < ApplicationController
   end
 
   def passengers
+    search_param = params[:search_type].split(" ").first if params[:search_type]
     @vehicle = Vehicle.find(params[:id])
-    @passengers = Passenger.where(vehicle_id: @vehicle.id)
-    @passengers = [@passengers] if @passengers.class == Passenger
-    @passengers ||= [] #trying to iterate on a null value will break the page
-
+    if search_param
+      @passengers = Passenger.where(vehicle_id: @vehicle.id).order(:name)
+    else
+      @passengers = Passenger.where(vehicle_id: @vehicle.id)
+    end
   end
 
 end
