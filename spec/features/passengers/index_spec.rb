@@ -27,4 +27,24 @@ describe 'as a visitor when I visit the passenger index page' do
     expect(page.body.index("passenger 2")).to be < page.body.index("passenger 3")
     expect(page.body.index("passenger 3")).to be < page.body.index("passenger 1")
   end
+
+  it "Has a form for only displaying records over a certain value" do
+    plane = Vehicle.create(name:"Boeing 747", locked: true, passenger_capacity: 100)
+    passenger1 = plane.passengers.create(name: "passenger 1", driver:false, age:37)
+    passenger2 = plane.passengers.create(name: "passenger 2", driver:true, age:65)
+    passenger3 = plane.passengers.create(name: "passenger 3", driver:false, age:5)
+
+    visit "/passengers"
+
+    expect(page).to have_button("Only return passengers older than specified age")
+    fill_in(:search, with: 50)
+    click_button "Only return passengers older than specified age"
+
+    expect(page).to have_content("passenger 2")
+
+    expect(page).to have_no_content("passenger 1")
+    expect(page).to have_no_content("passenger 3")
+  end
+
+
 end

@@ -31,4 +31,23 @@ describe 'as a visitor when I visit the vehicle index page' do
     expect(page.body.index("Ford Raptor")).to be < page.body.index("Boeing 747")
     expect(page.body.index("Boeing 747")).to be < page.body.index("Toyota Highlander")
   end
+
+  it "Has a form for only displaying records over a certain value" do
+    plane = Vehicle.create(name:"Boeing 747", locked: true, passenger_capacity: 100)
+    car = Vehicle.create(name:"Toyota Highlander", locked: false, passenger_capacity: 4)
+    truck = Vehicle.create(name:"Ford Raptor", locked: true, passenger_capacity: 5)
+
+    visit "/vehicles"
+
+    expect(page).to have_button("Only return vehicles with more than specified number of seats")
+    fill_in(:search, with: 5)
+    click_button "Only return vehicles with more than specified number of seats"
+
+    expect(page).to have_content("Boeing 747")
+
+    expect(page).to have_no_content("Toyota Highlander")
+    expect(page).to have_no_content("Ford Raptor")
+  end
+
+
 end
