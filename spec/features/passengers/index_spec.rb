@@ -15,7 +15,7 @@ describe 'as a visitor when I visit the passenger index page' do
     expect(page).to have_content("Age: 65")
   end
 
-  it "Orders records by recency" do
+  it "Orders records by recency and boolean value" do
     plane = Vehicle.create(name:"Boeing 747", locked: true, passenger_capacity: 100)
     passenger1 = plane.passengers.create(name: "passenger 1", driver:false, age:37)
     passenger2 = plane.passengers.create(name: "passenger 2", driver:true, age:65)
@@ -24,7 +24,7 @@ describe 'as a visitor when I visit the passenger index page' do
     visit '/passengers'
 
     #check order of elements as they appear on the page
-    expect(page.body.index("passenger 3")).to be < page.body.index("passenger 2")
-    expect(page.body.index("passenger 2")).to be < page.body.index("passenger 1")
+    expect(page.body.index("passenger 2")).to be < page.body.index("passenger 3")
+    expect(page.body.index("passenger 3")).to be < page.body.index("passenger 1")
   end
 end

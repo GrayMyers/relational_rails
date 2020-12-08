@@ -20,7 +20,7 @@ describe 'as a visitor when I visit the vehicle index page' do
     expect(page).to have_content("Create a New Vehicle")
   end
 
-  it "Orders records by recency" do
+  it "Orders records by recency and locked value" do
     plane = Vehicle.create(name:"Boeing 747", locked: true, passenger_capacity: 100)
     car = Vehicle.create(name:"Toyota Highlander", locked: false, passenger_capacity: 4)
     truck = Vehicle.create(name:"Ford Raptor", locked: true, passenger_capacity: 5)
@@ -28,8 +28,7 @@ describe 'as a visitor when I visit the vehicle index page' do
     visit '/vehicles'
 
     #check order of elements as they appear on the page
-    #page.body.should =~ /Boeing 747.*Toyota Highlander.*Ford Raptor/
-    expect(page.body.index("Ford Raptor")).to be < page.body.index("Toyota Highlander")
-    expect(page.body.index("Toyota Highlander")).to be < page.body.index("Boeing 747")
+    expect(page.body.index("Ford Raptor")).to be < page.body.index("Boeing 747")
+    expect(page.body.index("Boeing 747")).to be < page.body.index("Toyota Highlander")
   end
 end

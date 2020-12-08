@@ -1,6 +1,7 @@
 class PassengersController < ApplicationController
   def index
-    @passengers = Passenger.order(created_at: :desc)
+    @passengers = Passenger.order(created_at: :desc).find_all{|r| r.driver}
+    @passengers += Passenger.order(created_at: :desc).find_all{|r| !r.driver}
   end
 
   def show
