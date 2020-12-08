@@ -1,6 +1,6 @@
 class VehiclesController < ApplicationController
   def index
-    @vehicles = Vehicle.all
+    @vehicles = Vehicle.order(created_at: :desc)
   end
 
   def show
