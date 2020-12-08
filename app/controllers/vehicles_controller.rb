@@ -1,6 +1,7 @@
 class VehiclesController < ApplicationController
   def index
-    @vehicles = Vehicle.order(created_at: :desc)
+    @vehicles = Vehicle.order(created_at: :desc).find_all{|r| r.locked}
+    @vehicles += Vehicle.order(created_at: :desc).find_all{|r| !r.locked}
   end
 
   def show
