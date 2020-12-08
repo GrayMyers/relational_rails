@@ -2,8 +2,9 @@
 
 <ul>
   <% @ships.each do |ship| %>
-    <li>
-      <h3><%= ship.name %></h3>
+    <li class="ship-<%= ship.id %>">
+      <%= ship.name %><br/>
+      <%= ship.created_at.strftime("Created on %m/%d/%Y") %>
       <p>Floating: <%= ship.floating %></p>
       <p>Crew Count: <%= ship.crew_count %></p>
     </li>
