@@ -1,9 +1,12 @@
 <h1>Passengers</h1>
-
+<%= form_tag "/passengers", method: :get do %>
+  <%= number_field_tag :search, params[:search] %><br>
+  <%= submit_tag "Only return passengers older than specified age", name: nil %>
+<% end %>
 <ul>
   <% @passengers.each do |passenger| %>
     <li>
-      <h3><%= passenger.name %></h3>
+      <h3><%= passenger.name %></h3><%= passenger.created_at.strftime("Created on %m/%d/%Y") %>
       <p>Age: <%= passenger.age %></p>
       <p>Driver: <%= passenger.driver %></p>
     </li>

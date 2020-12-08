@@ -1,9 +1,14 @@
 <h1>Vehicles</h1>
+<%= form_tag "/vehicles", method: :get do %>
+  <%= number_field_tag :search, params[:search] %><br>
+  <%= submit_tag "Only return vehicles with more than specified number of seats", name: nil %>
+<% end %>
 <p><%= link_to "New Vehicle", "/vehicles/new" %><p>
+  <p><%= link_to "Sort by number of passengers", "/vehicles?search_type=passenger+number" %><p>
 <ul>
   <% @vehicles.each do |vehicle| %>
     <li>
-      <h3><%= vehicle.name %></h3>
+      <h3><%= vehicle.name %></h3> <%= vehicle.created_at.strftime("Created on %m/%d/%Y") %>
     </li>
   <% end %>
 </ul>

@@ -1,6 +1,13 @@
 class PassengersController < ApplicationController
   def index
-    @passengers = Passenger.all
+    search_param = params[:search].to_i.to_s #input sanitizing
+    if search_param && search_param.length > 0
+      @passengers = Passenger.order(created_at: :desc).where("driver = 'true'").where("age > '#{search_param}'")
+      @passengers += Passenger.order(created_at: :desc).where("driver = 'false'").where("age > '#{search_param}'")
+    else
+      @passengers = Passenger.order(created_at: :desc).where("driver = 'true'")
+      @passengers += Passenger.order(created_at: :desc).where("driver = 'false'")
+    end
   end
 
   def show

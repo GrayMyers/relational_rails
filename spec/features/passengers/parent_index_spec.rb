@@ -19,4 +19,18 @@ describe "As a visitor when I visit '/parents/:parent_id/child_table_name'" do
     expect(page).to have_no_content("passenger 3")
     expect(page).to have_no_content("Age: 30")
   end
+
+  it "Shows a count of all children associated with parent" do
+    plane = Vehicle.create(name:"Boeing 747", locked: true, passenger_capacity: 100)
+    car = Vehicle.create(name:"car", locked: true, passenger_capacity: 4)
+    passenger1 = plane.passengers.create(name: "passenger 1", driver:false, age:37)
+    passenger2 = plane.passengers.create(name: "passenger 2", driver:true, age:65)
+
+    passenger3 = car.passengers.create(name: "passenger 3", driver:false, age:30)
+    visit "/vehicles/#{plane.id}/passengers"
+    expect(page).to have_content("Passengers: 2")
+
+    visit "/vehicles/#{car.id}/passengers"
+    expect(page).to have_content("Passengers: 1")
+  end
 end
