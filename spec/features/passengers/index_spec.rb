@@ -24,7 +24,6 @@ describe 'as a visitor when I visit the passenger index page' do
     visit '/passengers'
 
     #check order of elements as they appear on the page
-    #page.body.should =~ /Boeing 747.*Toyota Highlander.*Ford Raptor/
     expect(page.body.index("passenger 3")).to be < page.body.index("passenger 2")
     expect(page.body.index("passenger 2")).to be < page.body.index("passenger 1")
   end

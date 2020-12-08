@@ -3,7 +3,7 @@
 <ul>
   <% @passengers.each do |passenger| %>
     <li>
-      <h3><%= passenger.name %></h3>
+      <h3><%= passenger.name %></h3><%= passenger.created_at.strftime("Created on %m/%d/%Y") %>
       <p>Age: <%= passenger.age %></p>
       <p>Driver: <%= passenger.driver %></p>
     </li>
