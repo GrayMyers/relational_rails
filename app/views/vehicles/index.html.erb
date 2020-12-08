@@ -4,6 +4,7 @@
   <%= submit_tag "Only return vehicles with more than specified number of seats", name: nil %>
 <% end %>
 <p><%= link_to "New Vehicle", "/vehicles/new" %><p>
+  <p><%= link_to "Sort by number of passengers", "/vehicles?search_type=passenger+number" %><p>
 <ul>
   <% @vehicles.each do |vehicle| %>
     <li>
