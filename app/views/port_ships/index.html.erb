@@ -12,6 +12,7 @@
       <p>Floating: <%= ship.floating %></p>
       <p>Crew Count: <%= ship.crew_count %></p>
       <%= link_to "Update Ship", "/ships/#{ship.id}/edit", class: "update-ship-#{ship.id}"  %>
+      <%= link_to "Delete Ship", "/ships/#{ship.id}", class: "delete-ship-#{ship.id}", method: :delete  %>
     </li>
   <% end %>
 </ul>

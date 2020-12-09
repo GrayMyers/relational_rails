@@ -75,5 +75,25 @@ describe 'As a visitor' do
         expect(current_path).to eql("/ships/#{@battleship.id}/edit")
       end
     end
+
+    it "I see a link to 'Delete Ship' next to each Ship" do
+      within ".ship-#{@battleship.id}" do
+        expect(page).to have_link('Delete Ship', href: "/ships/#{@battleship.id}")
+      end
+
+      within ".ship-#{@destroyer.id}" do
+        expect(page).to have_link('Delete Ship', href: "/ships/#{@destroyer.id}")
+      end
+    end
+
+    describe "When I click the link 'Delete Ship'" do
+      it "Then I am taken to '/ships' where I do not see the deleted ship" do
+        find(".delete-ship-#{@battleship.id}").click
+
+        expect(current_path).to eq("/ships")
+
+        expect(page).to_not have_content(@battleship.name)
+      end
+    end
   end
 end
