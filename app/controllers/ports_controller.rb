@@ -4,9 +4,11 @@ class PortsController < ApplicationController
 
   def index
     if (params[:dock_count_limit])
-      @ports = Port.where("dock_count > ?", params[:dock_count_limit].to_i)
+      @ports = Port.ports_with_dock_count_greater_than(params[:dock_count_limit])
+    elsif (params[:sort_by_ships])
+      @ports = Port.sort_ports_by_ship_count
     else
-      @ports = Port.all
+      @ports = Port.all.recent_at_top.panamax_capable_at_top
     end
   end
 
