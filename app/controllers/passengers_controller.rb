@@ -2,11 +2,9 @@ class PassengersController < ApplicationController
   def index
     search_param = params[:search].to_i.to_s #input sanitizing
     if search_param && search_param.length > 0
-      @passengers = Passenger.order(created_at: :desc).where("driver = 'true'").where("age > '#{search_param}'")
-      @passengers += Passenger.order(created_at: :desc).where("driver = 'false'").where("age > '#{search_param}'")
+      @passengers = Passenger.order(driver: :desc, created_at: :desc).where("age > '#{search_param}'")
     else
-      @passengers = Passenger.order(created_at: :desc).where("driver = 'true'")
-      @passengers += Passenger.order(created_at: :desc).where("driver = 'false'")
+      @passengers = Passenger.order(driver: :desc, created_at: :desc)
     end
   end
 
@@ -19,8 +17,8 @@ class PassengersController < ApplicationController
   end
 
   def create
-    @vehicle = Vehicle.find(params[:id])
-    @vehicle.passengers.create(name: params[:name], age: params[:age], driver: params[:driver])
+    @vehicle = Vehicle.find(params[:id]) #use strong params
+    @vehicle.passengers.create(passenger_params)
     redirect_to "/vehicles/#{@vehicle.id}/passengers"
   end
 
@@ -30,11 +28,7 @@ class PassengersController < ApplicationController
 
   def update
     passenger = Passenger.find(params[:id])
-    passenger.update(
-      name: params[:name],
-      age: params[:age],
-      driver: params[:driver]
-    )
+    passenger.update(passenger_params)
     redirect_to "/passengers/#{passenger.id}"
   end
 
@@ -43,4 +37,11 @@ class PassengersController < ApplicationController
     passenger.destroy
     redirect_to "/passengers/"
   end
+
+  private
+
+  def passenger_params
+    params.permit(:name,:age,:driver)
+  end
+
 end

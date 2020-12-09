@@ -6,11 +6,9 @@ class VehiclesController < ApplicationController
       @vehicles = Vehicle.all.sort_by{ |r| -r.passengers.count}
 
     elsif search_param && search_param.length > 0
-      @vehicles = Vehicle.order(created_at: :desc).where("locked = 'true'").where("passenger_capacity > '#{search_param}'")
-      @vehicles += Vehicle.order(created_at: :desc).where("locked = 'false'").where("passenger_capacity > '#{search_param}'")
+      @vehicles = Vehicle.order(locked: :desc, created_at: :desc).where("passenger_capacity > '#{search_param}'")
     else
-      @vehicles = Vehicle.order(created_at: :desc).where("locked = 'true'")
-      @vehicles += Vehicle.order(created_at: :desc).where("locked = 'false'")
+      @vehicles = Vehicle.order(locked: :desc, created_at: :desc)
     end
 
   end
@@ -24,7 +22,7 @@ class VehiclesController < ApplicationController
   end
 
   def create
-    Vehicle.create(name:params[:name],passenger_capacity:params[:passenger_capacity],locked:params[:locked])
+    Vehicle.create(vehicle_params)
     redirect_to "/vehicles"
   end
 
@@ -34,7 +32,7 @@ class VehiclesController < ApplicationController
 
   def update
     vehicle = Vehicle.find(params[:id])
-    vehicle.update(name:params[:name],passenger_capacity:params[:passenger_capacity],locked:params[:locked])
+    vehicle.update(vehicle_params)
     redirect_to "/vehicles/#{vehicle[:id]}"
   end
 
@@ -58,6 +56,12 @@ class VehiclesController < ApplicationController
     else
       @passengers = Passenger.where(vehicle_id: @vehicle.id)
     end
+  end
+
+  private
+
+  def vehicle_params
+    params.permit(:name, :passenger_capacity, :locked)
   end
 
 end
