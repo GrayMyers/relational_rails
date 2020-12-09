@@ -29,6 +29,10 @@ describe 'as a visitor when I visit the ports index page' do
     expect(@la.name).to appear_before(@ny.name)
   end
 
+  it 'Then I see a link to sort ports by the number of ships they have' do
+    expect(page).to have_link('Sort Ports By Ships')
+  end
+
   describe 'I see a form that allows me to input a number value' do
     describe 'When I input a number value and click the submit button' do
       it 'The ports index page renders only ports with dock_counts greater than the input number value' do
