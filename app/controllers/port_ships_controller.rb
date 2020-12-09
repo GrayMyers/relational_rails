@@ -3,7 +3,7 @@ class PortShipsController < ApplicationController
 
   def index
     if (params[:sort_ships_alphabetically])
-      @ships = @port.ships.order(:name)
+      @ships = @port.ships_sorted_by_name_alphabetically
     else
       @ships = @port.ships
     end
