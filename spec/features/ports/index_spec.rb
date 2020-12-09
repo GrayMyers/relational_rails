@@ -25,8 +25,7 @@ describe 'as a visitor when I visit the ports index page' do
     end
   end
 
-  it 'I see the records that have a `true` above/before the records that have a false' do
+  it 'I see the records that have panamax `true` above/before the records that have a false' do
     expect(@la.name).to appear_before(@ny.name)
-    expect(@orleans.name).to appear_before(@ny.name)
   end
 end

@@ -21,11 +21,6 @@ describe 'As a visitor' do
       expect(page).to have_content("Crew Count: #{@battleship.crew_count}")
     end
 
-    it 'I see the most recently created records in order by recency from top to bottom' do
-      expect(@battleship.name).to appear_before(@destroyer.name)
-      expect(@destroyer.name).to appear_before(@wreck.name)
-    end
-
     it 'I see the DateTime(s) next to each of the records in a reasonably formatted manner' do
       within(".ship-#{@battleship.id}") do
         expect(page).to have_content("Created on 12/10/2020")
@@ -34,6 +29,10 @@ describe 'As a visitor' do
       within(".ship-#{@wreck.id}") do
         expect(page).to have_content("Created on 12/08/2020")
       end
+    end
+
+    it 'I see the records that have floating: `true` above/before the records that have a false' do
+      expect(@battleship.name).to appear_before(@wreck.name)
     end
   end
 end
