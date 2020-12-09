@@ -33,6 +33,32 @@ describe 'as a visitor when I visit the ports index page' do
     expect(page).to have_link('Sort Ports By Ships')
   end
 
+  describe "When I click on the 'Sort Ports By Ships' link" do
+
+    it "I'm taken back to '/ports' where I see all of the ports in order of their count of ships" do
+      @la.ships.create!(name: 'Shipwreck', floating: false, crew_count: 0)
+      @ny.ships.create!(name: 'Battleship', floating: true, crew_count: 1500)
+      @ny.ships.create!(name: 'Destroyer', floating: true, crew_count: 100)
+
+      click_link('Sort Ports By Ships')
+
+      expect(current_path).to eq('/ports')
+      
+      expect(@ny.name).to appear_before(@la.name)
+      expect(@la.name).to appear_before(@orleans.name)
+    end
+
+    it 'I see the number of ships next to each port name' do
+      @la.ships.create!(name: 'Shipwreck', floating: false, crew_count: 0)
+
+      click_link('Sort Ports By Ships')
+
+      expect(page).to have_content('Los Angeles Ships: 1')
+      expect(page).to have_content('New York Ships: 0')
+      expect(page).to have_content('New Orleans Ships: 0')
+    end
+  end
+
   describe 'I see a form that allows me to input a number value' do
     describe 'When I input a number value and click the submit button' do
       it 'The ports index page renders only ports with dock_counts greater than the input number value' do
