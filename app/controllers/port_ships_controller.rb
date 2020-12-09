@@ -1,8 +1,12 @@
 class PortShipsController < ApplicationController
   before_action :load_port
-  
-  def index
 
+  def index
+    if (params[:sort_ships_alphabetically])
+      @ships = @port.ships.order(:name)
+    else
+      @ships = @port.ships
+    end
   end
 
   def new
