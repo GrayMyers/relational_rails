@@ -57,6 +57,17 @@ describe Port do
         expect(la.ship_count).to eq(3)
       end
     end
+    
+    describe 'ships_sorted_by_name_alphabetically' do
+      it 'should return ships sorted alphabetically' do
+        la = Port.create!(name: 'Los Angeles', panamax: true, dock_count: 5)
+        ship_c = la.ships.create!(name: 'c ship', floating: true, crew_count: 100)
+        ship_b = la.ships.create!(name: 'b ship', floating: true, crew_count: 100)
+        ship_a = la.ships.create!(name: 'a ship', floating: true, crew_count: 100)
+
+        expect(la.ships_sorted_by_name_alphabetically).to eq([ship_a, ship_b, ship_c])
+      end
+    end
   end
 
 end
