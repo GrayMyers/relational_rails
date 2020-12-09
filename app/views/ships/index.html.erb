@@ -1,4 +1,9 @@
 <h1>Ships</h1>
+<%= form_tag "/ships", method: :get do %>
+  <%= label_tag :crew_count_limit, 'Crew Count Threshold Number:' %>
+  <%= number_field_tag :crew_count_limit, '0', min: '0' %><br>
+  <%= submit_tag "Only return ships with more crew than the given `Crew Count Threshold Number`", name: nil %>
+<% end %>
 
 <ul>
   <% @ships.recent_at_top.each do |ship| %>
