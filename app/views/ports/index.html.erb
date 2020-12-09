@@ -5,6 +5,8 @@
   <%= submit_tag "Only return ports with more docks than the given `Dock Count Threshold Number`", name: nil %>
 <% end %>
 
+<%= link_to 'Sort Ports By Ships' %>
+
 <ul>
   <% @ports.recent_at_top.panamax_capable_at_top.each do |port| %>
     <li class="port-<%= port.id %>"><%= port.name %> <%= port.created_at.strftime("Created on %m/%d/%Y") %></li>
