@@ -18,4 +18,8 @@ class Port < ApplicationRecord
   def ship_count
     ships.count
   end
+
+  def ships_sorted_by_name_alphabetically
+    ships.order(:name)
+  end
 end

@@ -34,7 +34,6 @@ describe 'as a visitor when I visit the ports index page' do
   end
 
   describe "When I click on the 'Sort Ports By Ships' link" do
-
     it "I'm taken back to '/ports' where I see all of the ports in order of their count of ships" do
       @la.ships.create!(name: 'Shipwreck', floating: false, crew_count: 0)
       @ny.ships.create!(name: 'Battleship', floating: true, crew_count: 1500)
@@ -43,7 +42,7 @@ describe 'as a visitor when I visit the ports index page' do
       click_link('Sort Ports By Ships')
 
       expect(current_path).to eq('/ports')
-      
+
       expect(@ny.name).to appear_before(@la.name)
       expect(@la.name).to appear_before(@orleans.name)
     end
