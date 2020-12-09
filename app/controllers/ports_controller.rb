@@ -3,7 +3,11 @@ class PortsController < ApplicationController
   skip_before_action :load_port, only: [:index, :new, :create]
 
   def index
-    @ports = Port.all
+    if (params[:dock_count_limit])
+      @ports = Port.where("dock_count > ?", params[:dock_count_limit].to_i)
+    else
+      @ports = Port.all
+    end
   end
 
   def show
