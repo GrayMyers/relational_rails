@@ -2,8 +2,10 @@
 
 <p>Ship Count: <%= @port.ship_count %></p>
 
+<%= link_to 'Sort Ships Alphabetically', "/ports/#{@port.id}/ships?sort_ships_alphabetically=true", method: :get %>
+
 <ul>
-  <% @port.ships.each do |ship| %>
+  <% @ships.each do |ship| %>
     <li>
       <h3><%= ship.name %></h3>
       <p>Floating: <%= ship.floating %></p>
