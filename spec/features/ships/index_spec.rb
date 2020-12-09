@@ -34,5 +34,19 @@ describe 'As a visitor' do
     it 'I see the records that have floating: `true` above/before the records that have a false' do
       expect(@battleship.name).to appear_before(@wreck.name)
     end
+
+    describe 'I see a form that allows me to input a number value' do
+      describe 'When I input a number value and click the submit button' do
+        it 'The ships index page renders only ships with crew_counts greater than the input number value' do
+          fill_in 'crew_count_limit', with: '20'
+
+          click_on 'Only return ships with more crew than the given `Crew Count Threshold Number`'
+
+          expect(page).to have_content(@battleship.name)
+          expect(page).to have_content(@destroyer.name)
+          expect(page).to_not have_content(@wreck.name)
+        end
+      end
+    end
   end
 end
