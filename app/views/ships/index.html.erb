@@ -1,7 +1,7 @@
 <h1>Ships</h1>
 
 <ul>
-  <% @ships.each do |ship| %>
+  <% @ships.recent_at_top.each do |ship| %>
     <li class="ship-<%= ship.id %>">
       <%= ship.name %><br/>
       <%= ship.created_at.strftime("Created on %m/%d/%Y") %>

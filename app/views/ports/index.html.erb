@@ -1,7 +1,7 @@
 <h1>Ports</h1>
 
 <ul>
-  <% @ports.each do |port| %>
+  <% @ports.recent_at_top.panamax_capable_at_top.each do |port| %>
     <li class="port-<%= port.id %>"><%= port.name %> <%= port.created_at.strftime("Created on %m/%d/%Y") %></li>
   <% end %>
 </ul>
