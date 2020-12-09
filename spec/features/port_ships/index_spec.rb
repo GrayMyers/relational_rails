@@ -37,5 +37,25 @@ describe 'As a visitor' do
 
       expect(page).to have_content('Ship Count: 3')
     end
+
+    it 'Then I see a link to sort ships in alphabetical order' do
+      expect(page).to have_link('Sort Ships Alphabetically')
+    end
+
+    describe "When I click on the 'Sort Ships Alphabetically' link" do
+      it 'I see all of the ships in alphabetical order' do
+        @ship_c = @la.ships.create!(name: 'c ship', floating: true, crew_count: 100)
+        @ship_b = @la.ships.create!(name: 'b ship', floating: true, crew_count: 100)
+        @ship_a = @la.ships.create!(name: 'a ship', floating: true, crew_count: 100)
+
+        visit "/ports/#{@la.id}/ships"
+
+        click_link('Sort Ships Alphabetically')
+
+        expect(@ship_a.name).to appear_before(@ship_b.name)
+        expect(@ship_b.name).to appear_before(@ship_c.name)
+        expect(@battleship.name).to appear_before(@destroyer.name)
+      end
+    end
   end
 end
