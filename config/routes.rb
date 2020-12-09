@@ -23,17 +23,16 @@ Rails.application.routes.draw do
   get '/vehicles/new', to: 'vehicles#new'
   get 'vehicles/:id', to: 'vehicles#show'
   patch '/vehicles/:id', to: 'vehicles#update'
-  delete '/vehicles/:id', to: 'vehicles#delete'
+  delete '/vehicles/:id', to: 'vehicles#destroy' #destroy
   get '/vehicles/:id/edit', to: 'vehicles#edit'
 
-  get '/vehicles/:id/passengers', to: 'vehicles#passengers'
-  get '/vehicles/:id/passengers/new', to: 'passengers#new'
-  post '/vehicles/:id/passengers', to: 'passengers#create'
-
+  get '/vehicles/:id/passengers', to: 'vehicle_passengers#index' #Move these to new controller
+  get '/vehicles/:id/passengers/new', to: 'vehicle_passengers#new'
+  post '/vehicles/:id/passengers', to: 'vehicle_passengers#create'
 
   get '/passengers', to: 'passengers#index'
   get '/passengers/:id', to: 'passengers#show'
   get '/passengers/:id/edit', to: 'passengers#edit'
   patch '/passengers/:id', to: 'passengers#update'
-  delete '/passengers/:id', to: 'passengers#delete'
+  delete '/passengers/:id', to: 'passengers#destroy'
 end

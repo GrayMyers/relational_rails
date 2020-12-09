@@ -7,9 +7,9 @@ describe 'as a visitor when I visit the vehicle index page' do
     car = Vehicle.create(name:"Toyota Highlander", locked: false, passenger_capacity: 4)
     truck = Vehicle.create(name:"Ford Raptor", locked: true, passenger_capacity: 5)
     visit '/vehicles'
-    expect(page).to have_content("Boeing 747")
-    expect(page).to have_content("Toyota Highlander")
-    expect(page).to have_content("Ford Raptor")
+    expect(page).to have_content(plane.name)
+    expect(page).to have_content(car.name)
+    expect(page).to have_content(truck.name)
   end
 
   it 'Then I see a link which takes me to a creation page' do
@@ -28,8 +28,8 @@ describe 'as a visitor when I visit the vehicle index page' do
     visit '/vehicles'
 
     #check order of elements as they appear on the page
-    expect(page.body.index("Ford Raptor")).to be < page.body.index("Boeing 747")
-    expect(page.body.index("Boeing 747")).to be < page.body.index("Toyota Highlander")
+    expect(page.body.index(truck.name)).to be < page.body.index(plane.name)
+    expect(page.body.index(plane.name)).to be < page.body.index(car.name)
   end
 
   it "Has a form for only displaying records over a certain value" do
