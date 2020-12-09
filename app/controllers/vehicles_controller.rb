@@ -1,16 +1,6 @@
 class VehiclesController < ApplicationController
   def index
-    search_param = params[:search].to_i.to_s
-    search_type_param = params[:search_type] #no input sanitization yet as this parameter is harder to mess with and sanitize
-    if search_type_param
-      @vehicles = Vehicle.all.sort_by{ |r| -r.passengers.count}
-
-    elsif search_param && search_param.length > 0
-      @vehicles = Vehicle.order(locked: :desc, created_at: :desc).where("passenger_capacity > '#{search_param}'")
-    else
-      @vehicles = Vehicle.order(locked: :desc, created_at: :desc)
-    end
-
+    @vehicles = Vehicle.index_display(sanitize(params[:search]),params[:search_type])
   end
 
   def show
@@ -52,6 +42,10 @@ class VehiclesController < ApplicationController
 
   def vehicle_params
     params.permit(:name, :passenger_capacity, :locked)
+  end
+
+  def sanitize(search_param)
+    search_param.to_i.to_s
   end
 
 end

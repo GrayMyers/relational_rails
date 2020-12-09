@@ -1,12 +1,7 @@
 class VehiclePassengersController < ApplicationController
   def index
-    search_param = params[:search_type].split(" ").first if params[:search_type]
     @vehicle = Vehicle.find(params[:id])
-    if search_param
-      @passengers = Passenger.where(vehicle_id: @vehicle.id).order(:name)
-    else
-      @passengers = Passenger.where(vehicle_id: @vehicle.id)
-    end
+    @passengers = Passenger.from_vehicle(@vehicle, sanitize(params[:search_type]))
   end
 
   def new
@@ -23,5 +18,9 @@ class VehiclePassengersController < ApplicationController
 
   def passenger_params
     params.permit(:name,:age,:driver)
+  end
+
+  def sanitize(search)
+    params[:search_type].split(" ").first if params[:search_type]
   end
 end
