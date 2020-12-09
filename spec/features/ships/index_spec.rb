@@ -35,6 +35,24 @@ describe 'As a visitor' do
       expect(@battleship.name).to appear_before(@wreck.name)
     end
 
+    it "I see a link to 'Update Ship' next to Ship" do
+      within ".ship-#{@battleship.id}" do
+        expect(page).to have_link('Update Ship', href: "/ships/#{@battleship.id}/edit")
+      end
+
+      within ".ship-#{@destroyer.id}" do
+        expect(page).to have_link('Update Ship', href: "/ships/#{@destroyer.id}/edit")
+      end
+    end
+
+    describe "When I click the link 'Update Ship'" do
+      it "Then I am taken to '/ships/:id/edit'" do
+        find(".update-ship-#{@battleship.id}").click
+
+        expect(current_path).to eql("/ships/#{@battleship.id}/edit")
+      end
+    end
+
     describe 'I see a form that allows me to input a number value' do
       describe 'When I input a number value and click the submit button' do
         it 'The ships index page renders only ships with crew_counts greater than the input number value' do

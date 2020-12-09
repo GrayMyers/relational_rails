@@ -57,5 +57,23 @@ describe 'As a visitor' do
         expect(@battleship.name).to appear_before(@destroyer.name)
       end
     end
+
+    it "I see a link to 'Update Ship' next to each Ship" do
+      within ".ship-#{@battleship.id}" do
+        expect(page).to have_link('Update Ship', href: "/ships/#{@battleship.id}/edit")
+      end
+
+      within ".ship-#{@destroyer.id}" do
+        expect(page).to have_link('Update Ship', href: "/ships/#{@destroyer.id}/edit")
+      end
+    end
+
+    describe "When I click the link 'Update Ship'" do
+      it "Then I am taken to '/ships/:id/edit'" do
+        find(".update-ship-#{@battleship.id}").click
+
+        expect(current_path).to eql("/ships/#{@battleship.id}/edit")
+      end
+    end
   end
 end
