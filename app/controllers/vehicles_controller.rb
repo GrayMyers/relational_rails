@@ -36,7 +36,7 @@ class VehiclesController < ApplicationController
     redirect_to "/vehicles/#{vehicle[:id]}"
   end
 
-  def delete
+  def destroy
     vehicle = Vehicle.find(params[:id])
     vehicle.destroy
     redirect_to "/vehicles/"
@@ -45,16 +45,6 @@ class VehiclesController < ApplicationController
       passengers.each do |passenger|
         passenger.destroy
       end
-    end
-  end
-
-  def passengers
-    search_param = params[:search_type].split(" ").first if params[:search_type]
-    @vehicle = Vehicle.find(params[:id])
-    if search_param
-      @passengers = Passenger.where(vehicle_id: @vehicle.id).order(:name)
-    else
-      @passengers = Passenger.where(vehicle_id: @vehicle.id)
     end
   end
 

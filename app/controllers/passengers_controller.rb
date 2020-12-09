@@ -12,16 +12,6 @@ class PassengersController < ApplicationController
     @passenger = Passenger.find(params[:id])
   end
 
-  def new
-    @vehicle = Vehicle.find(params[:id])
-  end
-
-  def create
-    @vehicle = Vehicle.find(params[:id]) #use strong params
-    @vehicle.passengers.create(passenger_params)
-    redirect_to "/vehicles/#{@vehicle.id}/passengers"
-  end
-
   def edit
     @passenger = Passenger.find(params[:id])
   end
@@ -32,7 +22,7 @@ class PassengersController < ApplicationController
     redirect_to "/passengers/#{passenger.id}"
   end
 
-  def delete
+  def destroy
     passenger = Passenger.find(params[:id])
     passenger.destroy
     redirect_to "/passengers/"
