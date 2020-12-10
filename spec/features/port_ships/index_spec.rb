@@ -92,6 +92,12 @@ describe 'As a visitor' do
       expect(current_path).to eq("/ports/#{@la.id}")
     end
 
+    it "Has a link for the child" do
+      expect(page).to have_link(@battleship.name)
+      click_on @battleship.name
+      expect(current_path).to eq("/ports/#{@battleship.id}")
+    end
+
     describe "When I click the link 'Delete Ship'" do
       it "Then I am taken to '/ships' where I do not see the deleted ship" do
         find(".delete-ship-#{@battleship.id}").click
