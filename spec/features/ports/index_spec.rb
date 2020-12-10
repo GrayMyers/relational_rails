@@ -32,7 +32,7 @@ describe 'as a visitor when I visit the ports index page' do
 
   it "Next to every parent, I see a link to edit that parent's info" do
     expect(page).to have_link("Edit")
-    click_on "Edit"
-    expect(current_path).to eq("/ports/#{@la.id}/edit")
+    first(:link, "Edit").click
+    expect(current_path).to eq("/ports/#{@ny.id}/edit")
   end
 end
