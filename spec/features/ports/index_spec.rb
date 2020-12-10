@@ -37,9 +37,9 @@ describe 'as a visitor when I visit the ports index page' do
   end
 
   it "Next to every parent, I see a link to delete that parent" do
-    expect(page).to have_link("Edit")
-    first(:link, "Edit").click
-    expect(current_path).to eq("/ports/")
+    expect(page).to have_link("Delete")
+    first(:link, "Delete").click
+    expect(current_path).to eq("/ports")
     expect(page).to have_no_content(@ny.name)
   end
 end
