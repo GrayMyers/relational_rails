@@ -29,4 +29,10 @@ describe 'as a visitor when I visit the ports index page' do
       expect(page).to have_content("Created on 12/07/2020")
     end
   end
+
+  it "Next to every parent, I see a link to edit that parent's info" do
+    expect(page).to have_link("Edit")
+    click_on "Edit"
+    expect(current_path).to eq("/ports/#{@la.id}/edit")
+  end
 end
