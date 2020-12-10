@@ -40,6 +40,12 @@ describe 'as a visitor when I visit the ports index page' do
     expect(page).to have_no_content(@orleans.name)
   end
 
+  it "When I click on the name of a parent anywhere on the site then that link takes me to that Parent's show page" do
+    expect(page).to have_link(@orleans.name)
+    click_on @orleans.name
+    expect(current_path).to eq("/ports/#{@orleans.id}")
+  end
+
   it 'I see the records that have panamax `true` above/before the records that have a false' do
     expect(@la.name).to appear_before(@ny.name)
   end
