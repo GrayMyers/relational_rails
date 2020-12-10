@@ -3,7 +3,11 @@ class ShipsController < ApplicationController
   skip_before_action :load_ship, only: [:index]
 
   def index
-    @ships = Ship.all.sorted_recent_at_top
+    if (params[:crew_count_limit])
+      @ships = Ship.where("crew_count > ?", params[:crew_count_limit].to_i)
+    else
+      @ships = Ship.all
+    end
   end
 
   def show

@@ -2,12 +2,17 @@
 
 <p>Ship Count: <%= @port.ship_count %></p>
 
+<%= link_to 'Sort Ships Alphabetically', "/ports/#{@port.id}/ships?sort_ships_alphabetically=true", method: :get %>
+
 <ul>
-  <% @port.ships.each do |ship| %>
-    <li>
-      <h3><%= ship.name %></h3>
+  <% @ships.each do |ship| %>
+    <li class="ship-<%= ship.id %>">
+      <%= ship.name %><br/>
+      <%= ship.created_at.strftime("Created on %m/%d/%Y") %>
       <p>Floating: <%= ship.floating %></p>
       <p>Crew Count: <%= ship.crew_count %></p>
+      <%= link_to "Update Ship", "/ships/#{ship.id}/edit", class: "update-ship-#{ship.id}"  %>
+      <%= link_to "Delete Ship", "/ships/#{ship.id}", class: "delete-ship-#{ship.id}", method: :delete  %>
     </li>
   <% end %>
 </ul>

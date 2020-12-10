@@ -37,5 +37,63 @@ describe 'As a visitor' do
 
       expect(page).to have_content('Ship Count: 3')
     end
+
+    it 'Then I see a link to sort ships in alphabetical order' do
+      expect(page).to have_link('Sort Ships Alphabetically')
+    end
+
+    describe "When I click on the 'Sort Ships Alphabetically' link" do
+      it 'I see all of the ships in alphabetical order' do
+        @ship_c = @la.ships.create!(name: 'c ship', floating: true, crew_count: 100)
+        @ship_b = @la.ships.create!(name: 'b ship', floating: true, crew_count: 100)
+        @ship_a = @la.ships.create!(name: 'a ship', floating: true, crew_count: 100)
+
+        visit "/ports/#{@la.id}/ships"
+
+        click_link('Sort Ships Alphabetically')
+
+        expect(@ship_a.name).to appear_before(@ship_b.name)
+        expect(@ship_b.name).to appear_before(@ship_c.name)
+        expect(@battleship.name).to appear_before(@destroyer.name)
+      end
+    end
+
+    it "I see a link to 'Update Ship' next to each Ship" do
+      within ".ship-#{@battleship.id}" do
+        expect(page).to have_link('Update Ship', href: "/ships/#{@battleship.id}/edit")
+      end
+
+      within ".ship-#{@destroyer.id}" do
+        expect(page).to have_link('Update Ship', href: "/ships/#{@destroyer.id}/edit")
+      end
+    end
+
+    describe "When I click the link 'Update Ship'" do
+      it "Then I am taken to '/ships/:id/edit'" do
+        find(".update-ship-#{@battleship.id}").click
+
+        expect(current_path).to eql("/ships/#{@battleship.id}/edit")
+      end
+    end
+
+    it "I see a link to 'Delete Ship' next to each Ship" do
+      within ".ship-#{@battleship.id}" do
+        expect(page).to have_link('Delete Ship', href: "/ships/#{@battleship.id}")
+      end
+
+      within ".ship-#{@destroyer.id}" do
+        expect(page).to have_link('Delete Ship', href: "/ships/#{@destroyer.id}")
+      end
+    end
+
+    describe "When I click the link 'Delete Ship'" do
+      it "Then I am taken to '/ships' where I do not see the deleted ship" do
+        find(".delete-ship-#{@battleship.id}").click
+
+        expect(current_path).to eq("/ships")
+
+        expect(page).to_not have_content(@battleship.name)
+      end
+    end
   end
 end

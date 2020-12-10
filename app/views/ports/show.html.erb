@@ -1,5 +1,6 @@
 <h1><%= @port.name %></h1>
 <p>Panamax Capable: <%= @port.panamax %></p>
 <p>Dock Count: <%= @port.dock_count %></p>
+<%= link_to "Port Ships", "/ports/#{@port.id}/ships" %>
 <%= link_to "Update Port", "/ports/#{@port.id}/edit"  %>
 <%= link_to "Delete Port", "/ports/#{@port.id}", method: :delete  %><br>
