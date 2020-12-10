@@ -1,5 +1,6 @@
 <h1><%= @vehicle.name %></h1>
 <p>
+  <%= link_to "Vehicle Passengers", "/vehicles/#{@vehicle.id}/passengers" %>
   <%= link_to("Update Vehicle","/vehicles/#{@vehicle.id}/edit") %>
   <%= link_to("Delete Vehicle","/vehicles/#{@vehicle.id}/",method: :delete) %><br>
   Seats: <%= @vehicle.passenger_capacity%><br>

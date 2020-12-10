@@ -1,8 +1,17 @@
 <h1>Ports</h1>
+<%= form_tag "/ports", method: :get do %>
+  <%= label_tag :dock_count_limit, 'Dock Count Threshold Number:' %>
+  <%= number_field_tag :dock_count_limit, '0', min: '0' %><br>
+  <%= submit_tag "Only return ports with more docks than the given `Dock Count Threshold Number`", name: nil %>
+<% end %>
+
+<%= link_to 'Sort Ports By Ships', '/ports?sort_by_ships=true', method: :get %>
 
 <ul>
   <% @ports.each do |port| %>
+
     <li class="port-<%= port.id %>"><%= port.name %>
+      Ships: <%= port.ships.count %> <br/>
       <%= port.created_at.strftime("Created on %m/%d/%Y") %>
       <%= link_to("Edit","/ports/#{port.id}/edit") %>
       <%= link_to("Delete","/ports/#{port.id}",method: :delete) %>
