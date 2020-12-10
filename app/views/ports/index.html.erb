@@ -14,11 +14,7 @@
       Ships: <%= port.ships.count %> <br/>
       <%= port.created_at.strftime("Created on %m/%d/%Y") %>
       <%= link_to("Edit","/ports/#{port.id}/edit") %>
-<<<<<<< HEAD
       <%= link_to("Delete","/ports/#{port.id}",method: :delete) %>
-=======
-
->>>>>>> 9c5ab8a11e17d8666eb7f7d1910f3e585e62a18c
     </li>
   <% end %>
 </ul>

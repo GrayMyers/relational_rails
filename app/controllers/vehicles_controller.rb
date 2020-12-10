@@ -30,7 +30,7 @@ class VehiclesController < ApplicationController
     vehicle = Vehicle.find(params[:id])
     vehicle.destroy
     redirect_to "/vehicles/"
-    passengers = Passenger.find_by(id: params[:id])
+    passengers = Passenger.where("vehicle_id = '#{vehicle.id}'")
     if passengers
       passengers.each do |passenger|
         passenger.destroy
