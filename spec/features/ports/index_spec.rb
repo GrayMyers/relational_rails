@@ -40,6 +40,22 @@ describe 'as a visitor when I visit the ports index page' do
 
   it "Next to every parent, I see a link to edit that parent's info" do
     expect(page).to have_link("Edit")
+    first(:link, "Edit").click
+    expect(current_path).to eq("/ports/#{@orleans.id}/edit")
+  end
+
+
+  it "Next to every parent, I see a link to delete that parent" do
+    expect(page).to have_link("Delete")
+    first(:link, "Delete").click
+    expect(current_path).to eq("/ports")
+    expect(page).to have_no_content(@orleans.name)
+  end
+
+  it "When I click on the name of a parent anywhere on the site then that link takes me to that Parent's show page" do
+    expect(page).to have_link(@orleans.name)
+    click_on @orleans.name
+    expect(current_path).to eq("/ports/#{@orleans.id}")
 
     within(".port-#{@ny.id}") do
       first(:link, "Edit").click

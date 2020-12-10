@@ -11,7 +11,7 @@
 <ul>
   <% @ports.each do |port| %>
 
-    <li class="port-<%= port.id %>"><%= port.name %>
+    <li class="port-<%= port.id %>"><%= link_to(port.name,"/ports/#{port.id}") %>
       Ships: <%= port.ships.count %> <br/>
       <%= port.created_at.strftime("Created on %m/%d/%Y") %>
       <%= link_to("Edit","/ports/#{port.id}/edit") %>

@@ -50,4 +50,17 @@ describe "As a visitor when I visit '/parents/:parent_id/child_table_name'" do
     expect(page.body.index("passenger B")).to be < page.body.index("passenger C")
     expect(page.body.index("passenger C")).to be < page.body.index("passenger D")
   end
+
+  it "Has a link for the vehicle show page" do
+    plane = Vehicle.create(name:"Boeing 747", locked: true, passenger_capacity: 100)
+    car = Vehicle.create(name:"car", locked: true, passenger_capacity: 4)
+    passenger1 = plane.passengers.create(name: "passenger 1", driver:false, age:37)
+    passenger2 = plane.passengers.create(name: "passenger 2", driver:true, age:65)
+
+    passenger3 = car.passengers.create(name: "passenger 3", driver:false, age:30)
+    visit "/vehicles/#{plane.id}/passengers"
+    expect(page).to have_link(plane.name)
+    click_on plane.name
+    expect(current_path).to eq("/vehicles/#{plane.id}")
+  end
 end

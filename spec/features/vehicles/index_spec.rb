@@ -91,4 +91,14 @@ describe 'as a visitor when I visit the vehicle index page' do
   end
 
 
+  it "Has a link for each parent that redirects to parent show page" do
+    car = Vehicle.create(name:"Toyota Highlander", locked: false, passenger_capacity: 4)
+
+    visit '/vehicles'
+
+    expect(page).to have_link(car.name)
+    click_on car.name
+
+    expect(current_path).to eq("/vehicles/#{car.id}")
+  end
 end
