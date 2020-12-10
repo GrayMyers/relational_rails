@@ -8,7 +8,10 @@
 <ul>
   <% @vehicles.each do |vehicle| %>
     <li>
-      <h3><%= vehicle.name %></h3> <%= vehicle.created_at.strftime("Created on %m/%d/%Y") %>
+      <h3><%= vehicle.name %></h3>
+      <%= vehicle.created_at.strftime("Created on %m/%d/%Y") %>
+      <%= link_to("Edit","/vehicles/#{vehicle.id}/edit") %>
+      <%= link_to("Delete","/vehicles/#{vehicle.id}", method: :delete) %>
     </li>
   <% end %>
 </ul>

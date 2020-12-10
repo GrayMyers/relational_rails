@@ -13,7 +13,7 @@
 
 ## Description
 
-This is a two week paired project builds a CRUD database with 4 tables (Vehicles => Passengers, Ports => Ships). Users can navigate to any of these four tables using the navigation links at the top of the top. Users are then able to create new records, read individual record, update records, or destroy a record.
+This is a two week paired project that uses TDD to build a CRUD database with 4 tables (Vehicles => Passengers, Ports => Ships). Users can navigate to any of these four tables using the navigation links at the top of the browser. Users are then able to create new records, read individual records, update records, or destroy records. 
 
 Relational Rails is a [Turing School of Software and Design](https://turing.io/) Back End Mod 2 Project.
 

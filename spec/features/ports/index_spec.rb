@@ -25,6 +25,20 @@ describe 'as a visitor when I visit the ports index page' do
     end
   end
 
+
+  it "Next to every parent, I see a link to edit that parent's info" do
+    expect(page).to have_link("Edit")
+    first(:link, "Edit").click
+    expect(current_path).to eq("/ports/#{@ny.id}/edit")
+  end
+  
+  it "Next to every parent, I see a link to delete that parent" do
+    expect(page).to have_link("Delete")
+    first(:link, "Delete").click
+    expect(current_path).to eq("/ports")
+    expect(page).to have_no_content(@ny.name)
+  end
+  
   it 'I see the records that have panamax `true` above/before the records that have a false' do
     expect(@la.name).to appear_before(@ny.name)
   end
