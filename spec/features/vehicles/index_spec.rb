@@ -86,7 +86,7 @@ describe 'as a visitor when I visit the vehicle index page' do
     expect(page).to have_link("Delete")
     click_on "Delete"
 
-    expect(current_path).to eq("/vehicles")
+    expect(current_path).to eq("/vehicles/")
     expect(page).to have_no_content(car.name)
   end
 
