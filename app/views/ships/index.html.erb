@@ -8,7 +8,7 @@
 <ul>
   <% @ships.recent_at_top.each do |ship| %>
     <li class="ship-<%= ship.id %>">
-      <%= ship.name %><br/>
+      <%= link_to(ship.name,"/ships/#{ship.id}") %><br/>
       <%= ship.created_at.strftime("Created on %m/%d/%Y") %>
       <p>Floating: <%= ship.floating %></p>
       <p>Crew Count: <%= ship.crew_count %></p>
