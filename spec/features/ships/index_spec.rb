@@ -45,6 +45,12 @@ describe 'As a visitor' do
       end
     end
 
+    it "I see a link for each ship to view its show page" do
+      expect(page).to have_link(@battleship.name)
+      click_on @battleship.name
+      expect(current_path).to eq("/ships/#{@battleship.id}")
+    end
+
     describe "When I click the link 'Update Ship'" do
       it "Then I am taken to '/ships/:id/edit'" do
         find(".update-ship-#{@battleship.id}").click
