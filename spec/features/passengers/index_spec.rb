@@ -49,6 +49,7 @@ describe 'as a visitor when I visit the passenger index page' do
   it "Has a link for each child" do
     plane = Vehicle.create(name:"Boeing 747", locked: true, passenger_capacity: 100)
     passenger1 = plane.passengers.create(name: "passenger 1", driver:false, age:37)
+    visit '/passengers'
     expect(page).to have_link(passenger1.name)
     click_on passenger1.name
     expect(current_path).to eq("/passengers/#{passenger1.id}")
