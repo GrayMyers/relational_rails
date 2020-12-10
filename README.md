@@ -3,10 +3,9 @@
 ## Table of Contents
 
 * [Description](#description)
-* [Status](#status)
-* [Learning Goals](#learning-goals)
 * [Live App](#live-app)
 * [Installation and Setup](#installation-and-setup)
+* [Learning Goals](#learning-goals)
 * [Technologies Used](#technologies-used)
 * [Reflection](#reflection)
 * [Contributors](#contributors)
@@ -16,18 +15,6 @@
 This is a two week paired project that uses TDD to build a CRUD database with 4 tables (Vehicles => Passengers, Ports => Ships). Users can navigate to any of these four tables using the navigation links at the top of the browser. Users are then able to create new records, read individual records, update records, or destroy records.
 
 Relational Rails is a [Turing School of Software and Design](https://turing.io/) Back End Mod 2 Project.
-
-## Status
-
-This project is currently in development.
-
-## Learning Goals
-
-* Design a one to many relationship using a schema designer
-* Write migrations to create tables with columns of varying data types and foreign keys.
-* Use Rails to create web pages that allow users to CRUD resources
-* Create instance and class methods on a Rails model that use ActiveRecord methods and helpers
-* Write model and feature tests that fully cover data logic and user behavior
 
 ## Live App
 
@@ -53,19 +40,27 @@ rails s
 
 The application should now be running on http://localhost:3000/
 
+## Learning Goals
+
+* Design a one to many relationship using a schema designer
+* Write migrations to create tables with columns of varying data types and foreign keys.
+* Use Rails to create web pages that allow users to CRUD resources
+* Create instance and class methods on a Rails model that use ActiveRecord methods and helpers
+* Write model and feature tests that fully cover data logic and user behavior
+
 ## Technologies Used
 
-Atom
-Git
-GitHub
-GitHub Projects
-Ruby
-Rails
-RSpec
-SimpleCov
-Slack
-Zoom
-Orderly
+* Atom
+* Git
+* GitHub
+* GitHub Projects
+* Ruby
+* Rails
+* RSpec
+* SimpleCov
+* Slack
+* Zoom
+* Orderly
 
 ## Reflection
 
