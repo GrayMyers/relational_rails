@@ -89,13 +89,13 @@ describe 'As a visitor' do
     it "Has a link for the parent" do
       expect(page).to have_link(@la.name)
       click_on @la.name
-      expect(current_path).to eq("/ships/#{@la.id}")
+      expect(current_path).to eq("/ports/#{@la.id}")
     end
 
     it "Has a link for the child" do
       expect(page).to have_link(@battleship.name)
       click_on @battleship.name
-      expect(current_path).to eq("/ports/#{@battleship.id}")
+      expect(current_path).to eq("/ships/#{@battleship.id}")
     end
 
     describe "When I click the link 'Delete Ship'" do
