@@ -78,5 +78,17 @@ describe 'as a visitor when I visit the vehicle index page' do
     expect(current_path).to eq("/vehicles/#{car.id}/edit")
   end
 
+  it "Has a link for each parent that deletes that parent" do
+    car = Vehicle.create(name:"Toyota Highlander", locked: false, passenger_capacity: 4)
+
+    visit '/vehicles'
+
+    expect(page).to have_link("Delete")
+    click_on "Delete"
+
+    expect(current_path).to eq("/vehicles/")
+    expect(page).to have_no_content(car.name)
+  end
+
 
 end
