@@ -57,6 +57,8 @@ describe 'as a visitor when I visit the ports index page' do
     click_on @orleans.name
     expect(current_path).to eq("/ports/#{@orleans.id}")
 
+    visit '/ports'
+    
     within(".port-#{@ny.id}") do
       first(:link, "Edit").click
     end
@@ -70,7 +72,7 @@ describe 'as a visitor when I visit the ports index page' do
     within(".port-#{@ny.id}") do
       first(:link, "Delete").click
     end
-    
+
     expect(current_path).to eq("/ports")
     expect(page).to have_no_content(@ny.name)
   end
