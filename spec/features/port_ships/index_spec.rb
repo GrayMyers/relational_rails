@@ -89,7 +89,7 @@ describe 'As a visitor' do
     it "Has a link for the parent" do
       expect(page).to have_link(@la.name)
       click_on @la.name
-      expect(current_path).to eq("/ports/#{@la.id}")
+      expect(current_path).to eq("/ships/#{@la.id}")
     end
 
     it "Has a link for the child" do
