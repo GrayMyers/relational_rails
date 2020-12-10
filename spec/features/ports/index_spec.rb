@@ -15,6 +15,18 @@ describe 'as a visitor when I visit the ports index page' do
     expect(page).to have_content(@orleans.name)
   end
 
+  it "Then I see a link to create a new Port record, 'New Port'" do
+    expect(page).to have_link('New Port', href: '/ports/new')
+  end
+
+  describe "When I click this link" do
+    it "Then I am taken to '/ports/new' where I  see a form for a new parent record" do
+      click_link('New Port')
+
+      expect(current_path).to eq('/ports/new')
+    end
+  end
+
   it 'I see the DateTime(s) next to each of the records in a reasonably formatted manner' do
     within(".port-#{@ny.id}") do
       expect(page).to have_content("Created on 12/09/2020")
@@ -44,6 +56,23 @@ describe 'as a visitor when I visit the ports index page' do
     expect(page).to have_link(@orleans.name)
     click_on @orleans.name
     expect(current_path).to eq("/ports/#{@orleans.id}")
+
+    within(".port-#{@ny.id}") do
+      first(:link, "Edit").click
+    end
+
+    expect(current_path).to eq("/ports/#{@ny.id}/edit")
+  end
+
+  it "Next to every parent, I see a link to delete that parent" do
+    expect(page).to have_link("Delete")
+
+    within(".port-#{@ny.id}") do
+      first(:link, "Delete").click
+    end
+    
+    expect(current_path).to eq("/ports")
+    expect(page).to have_no_content(@ny.name)
   end
 
   it 'I see the records that have panamax `true` above/before the records that have a false' do

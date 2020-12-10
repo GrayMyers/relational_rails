@@ -90,6 +90,7 @@ describe 'as a visitor when I visit the vehicle index page' do
     expect(page).to have_no_content(car.name)
   end
 
+
   it "Has a link for each parent that redirects to parent show page" do
     car = Vehicle.create(name:"Toyota Highlander", locked: false, passenger_capacity: 4)
 
@@ -100,6 +101,4 @@ describe 'as a visitor when I visit the vehicle index page' do
 
     expect(current_path).to eq("/vehicles/#{car.id}")
   end
-
-
 end
