@@ -67,5 +67,16 @@ describe 'as a visitor when I visit the vehicle index page' do
     expect(page.body.index("Toyota Highlander")).to be < page.body.index("Ford Raptor")
   end
 
+  it "Has a link for each parent that redirects to the edit page" do
+    car = Vehicle.create(name:"Toyota Highlander", locked: false, passenger_capacity: 4)
+
+    visit '/vehicles'
+
+    expect(page).to have_link("Edit")
+    click_on "Edit"
+
+    expect(current_path).to eq("/vehicles/#{car.id}/edit")
+  end
+
 
 end
