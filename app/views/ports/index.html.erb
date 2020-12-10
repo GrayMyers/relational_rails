@@ -6,6 +6,7 @@
 <% end %>
 
 <%= link_to 'Sort Ports By Ships', '/ports?sort_by_ships=true', method: :get %>
+<%= link_to 'New Port', '/ports/new' %>
 
 <ul>
   <% @ports.each do |port| %>
