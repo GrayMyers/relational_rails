@@ -13,7 +13,7 @@
 
 ## Description
 
-This is a two week paired project that uses TDD to build a CRUD database with 4 tables (Vehicles => Passengers, Ports => Ships). Users can navigate to any of these four tables using the navigation links at the top of the browser. Users are then able to create new records, read individual records, update records, or destroy records. 
+This is a two week paired project that uses TDD to build a CRUD database with 4 tables (Vehicles => Passengers, Ports => Ships). Users can navigate to any of these four tables using the navigation links at the top of the browser. Users are then able to create new records, read individual records, update records, or destroy records.
 
 Relational Rails is a [Turing School of Software and Design](https://turing.io/) Back End Mod 2 Project.
 
@@ -31,11 +31,27 @@ This project is currently in development.
 
 ## Live App
 
-[Live App]()
+[Live App](https://radiant-ocean-11050.herokuapp.com/)
 
 ## Installation and Setup
 
-// Setup goes here
+In your terminal run the following commands to install this project locally on your computer:
+
+```
+git clone https://github.com/GrayMyers/relational_rails.git
+
+cd relational rails
+
+bundle install
+
+rails db:create
+
+rails db:migrate
+
+rails s
+```
+
+The application should now be running on http://localhost:3000/
 
 ## Technologies Used
 
